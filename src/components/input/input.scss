@@ -1,0 +1,13 @@
+@use '../../scss/variable' as *;
+
+input {
+    padding: 0.75rem 1.5rem;
+    background-color: $black;
+    border: 0;
+    font-size: 1rem;
+    border-radius: $border-radius;
+    font-family:$font-family;
+    color: $text-color;
+    margin-right: 1rem;
+    box-shadow:0 0 3px 3px rgba(255,255,255,0.1);
+}

@@ -1,0 +1,90 @@
+@use '../../scss' as *;
+
+.header {
+    position:fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 99;
+    height: $header-height;
+    transition: height 0.3s ease, background-color 0.3s ease;
+
+    &-logo {
+        font-size: 2.5rem;
+        font-weight: 600;
+        @include flex(center,unset);
+    
+        img {
+            width: 50px;
+            margin-right: 10px;
+
+            @include mobile {
+                width: 30px;
+                margin-right: 0;
+            }
+        }
+    }
+
+    &.shrink {
+        height:$header-shrink-height;
+        background-color:$body-color;
+    }
+
+    &-wrap {
+        @include flex(center, space-between);
+        height: 100%;
+        padding: 0 2rem;
+
+        @include mobile {
+            justify-content: center;
+        }
+    }
+
+    &-nav {
+        @include flex(center, unset);
+
+        & > * ~ * {
+            margin-left: 2rem;
+        }
+
+        li {
+            font-weight: 700;
+            font-size: 1.5rem;
+            padding: 5px 0;
+            position: relative;
+
+            &::after {
+                content: '';
+                position: absolute;
+                bottom: 0;
+                left: 50%;
+                transform:translateX(-50%);
+                width: 0;
+                height: 2px;
+                transition:width 0.3s ease;
+                background-color: $main-color;
+            }
+
+            &.active::after,
+            &:hover::after {
+                width: 100%;
+            }
+        }
+
+        @include mobile {
+            width: 100%;
+            position:fixed;
+            bottom: 0;
+            left: 0;
+            height: 5rem;
+            padding: 0 2rem;
+            background-color:$body-color;
+            box-shadow: $box-shadow;
+            @include flex(center, space-between);
+
+            & > * ~ * {
+                margin-left: 0;
+            }
+        }
+    }
+}
